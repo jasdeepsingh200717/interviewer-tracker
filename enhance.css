@@ -1,0 +1,381 @@
+/* enhance.css — load AFTER style.css.
+   1) Adds styles your HTML uses but style.css doesn't define
+      (modal, form, add button, questions heading, empty state).
+   2) Styles for the extra interactive features in enhance.js. */
+
+
+/* =========================
+   MISSING BASE STYLES
+========================= */
+
+.questions-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.questions-heading h2 {
+    font-family: "Archivo", sans-serif;
+    font-size: 15px;
+    color: var(--text-dark);
+    margin-bottom: 3px;
+}
+
+.questions-heading p {
+    font-size: 10px;
+    color: var(--text-light);
+}
+
+.add-question-btn,
+.save-question-btn,
+.enh-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 9px 14px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.add-question-btn:hover,
+.save-question-btn:hover,
+.enh-btn:hover {
+    background: #4338ca;
+}
+
+.add-question-btn:active,
+.save-question-btn:active,
+.enh-btn:active {
+    transform: scale(0.97);
+}
+
+.empty-state {
+    padding: 44px 14px;
+    text-align: center;
+}
+
+.empty-state h3 {
+    font-size: 13px;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.empty-state p {
+    font-size: 11px;
+    color: var(--text-light);
+}
+
+
+/* Add / edit modal (hidden until .show is added by script.js) */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(15, 23, 42, 0.45);
+}
+
+.modal.show {
+    display: flex;
+    animation: enh-fade 0.15s ease;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 420px;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+    animation: enh-rise 0.2s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.modal-header h2 {
+    font-family: "Archivo", sans-serif;
+    font-size: 16px;
+    color: var(--text-dark);
+}
+
+.modal-header button,
+.enh-x {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-light);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.modal-header button:hover,
+.enh-x:hover {
+    background: #f1f5f9;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 12px;
+}
+
+.form-group label,
+.enh-field label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select,
+.enh-field input {
+    height: 36px;
+    border: 1px solid #dbe2ec;
+    border-radius: 6px;
+    padding: 0 10px;
+    font-family: inherit;
+    font-size: 12px;
+    color: var(--text);
+    background: #fff;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.enh-field input:focus,
+.search-box:focus-within,
+.filter select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.save-question-btn {
+    width: 100%;
+    padding: 11px;
+    margin-top: 4px;
+    font-size: 12px;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+@keyframes enh-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes enh-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+
+/* =========================
+   INTERACTIVE EXTRAS
+========================= */
+
+/* progress bars glide */
+.progress-fill,
+.machine-progress-bar {
+    transition: width 0.6s ease;
+}
+
+/* clickable status badges */
+.badge.status-completed,
+.badge.status-progress,
+.badge.status-pending {
+    cursor: pointer;
+    user-select: none;
+    transition: filter 0.15s ease, transform 0.1s ease;
+}
+
+.badge.status-completed:hover,
+.badge.status-progress:hover,
+.badge.status-pending:hover {
+    filter: brightness(0.94);
+    transform: translateY(-1px);
+}
+
+/* clickable stat cards */
+.enh-clickable {
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.enh-clickable:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+/* profile is clickable (opens settings) */
+.profile {
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 4px 8px;
+}
+
+.profile:hover {
+    background: #eef2f7;
+}
+
+/* row entrance + hover */
+.enh-row-in {
+    animation: enh-row 0.3s ease both;
+}
+
+@keyframes enh-row {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: none; }
+}
+
+.question-row {
+    transition: background-color 0.15s ease;
+}
+
+.question-row:hover {
+    background-color: rgba(79, 70, 229, 0.04);
+}
+
+/* result count + clear filters */
+.enh-count {
+    padding: 9px 14px 0;
+    font-size: 10px;
+    color: var(--text-light);
+    background: #f8fafc;
+}
+
+.enh-clear {
+    display: none;
+    grid-column: 1 / -1;
+    justify-self: end;
+    padding: 6px 12px;
+    border: 1px solid #d1d9e4;
+    border-radius: 6px;
+    background: #fff;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.enh-clear:hover {
+    background: #f1f5f9;
+}
+
+/* toasts */
+.enh-toast-host {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.enh-toast {
+    background: #10213f;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.enh-toast.show {
+    opacity: 1;
+    transform: none;
+}
+
+/* confetti */
+.enh-confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    z-index: 9999;
+    pointer-events: none;
+    animation: enh-pop 0.85s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+}
+
+@keyframes enh-pop {
+    to { transform: translate(var(--dx), var(--dy)) rotate(540deg); opacity: 0; }
+}
+
+/* settings panel */
+.enh-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 12px;
+}
+
+.enh-section {
+    border-top: 1px solid var(--border);
+    margin-top: 14px;
+    padding-top: 14px;
+}
+
+.enh-section h3 {
+    font-size: 12px;
+    color: var(--text-dark);
+    margin-bottom: 3px;
+}
+
+.enh-section p {
+    font-size: 10px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.enh-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.enh-btn.secondary {
+    background: #fff;
+    color: var(--text);
+    border: 1px solid #d1d9e4;
+}
+
+.enh-btn.secondary:hover {
+    background: #f1f5f9;
+}
+
+.enh-btn.danger {
+    background: #fff;
+    color: #dc2626;
+    border: 1px solid #f1d9dc;
+}
+
+.enh-btn.danger:hover {
+    background: #fef2f2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

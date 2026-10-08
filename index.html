@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Interview Practice Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="enhance.css">
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Archivo:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">&lt;/&gt;</div>
+            <span>Interview Tracker</span>
+        </div>
+
+        <nav class="nav">
+
+            <a href="#" class="nav-item active">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#questionsSection" class="nav-item">
+                <span class="nav-icon">▣</span>
+                <span>Questions</span>
+            </a>
+
+            <!-- <a href="#progressSection" class="nav-item">
+                <span class="nav-icon">◔</span>
+                <span>Progress</span>
+            </a> -->
+
+        </nav>
+
+        <!-- <div class="sidebar-bottom">
+
+            <a href="#" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </div> -->
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div>
+                <h1>Good Morning, Aspirant! 👋</h1>
+                <p>Keep going! Small steps lead to big results.</p>
+            </div>
+
+            <div class="profile">
+
+                <div class="avatar">J</div>
+
+                <span>Jasdeep Singh</span>
+
+                <span class="arrow">⌄</span>
+
+            </div>
+
+        </header>
+
+
+        <!-- STAT CARDS -->
+        <section class="stats-grid">
+
+            <!-- TOTAL QUESTIONS -->
+            <div class="stat-card blue-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon blue">
+                        ▤
+                    </div>
+
+                    <span>Total Questions</span>
+
+                </div>
+
+                <h2 id="totalQuestions">0</h2>
+
+                <p class="increase">
+                    ↗ +3 this week
+                </p>
+
+            </div>
+
+
+            <!-- DSA -->
+            <div class="stat-card green-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon green">
+                        ✓
+                    </div>
+
+                    <span>Completed DSA Problems</span>
+
+                </div>
+
+                <h2 id="completedDSA">0</h2>
+
+                <p class="increase">
+                    ↗ +2 this week
+                </p>
+
+            </div>
+
+
+            <!-- INTERVIEW -->
+            <div class="stat-card purple-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon purple">
+                        &lt;/&gt;
+                    </div>
+
+                    <span>Completed Interview Questions</span>
+
+                </div>
+
+                <h2 id="completedInterview">0</h2>
+
+                <p class="increase">
+                    ↗ +1 this week
+                </p>
+
+            </div>
+
+
+            <!-- MACHINE CODING -->
+            <div class="stat-card orange-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon orange">
+                        ⚙
+                    </div>
+
+                    <span>Machine Coding Status</span>
+
+                </div>
+
+                <div class="machine-score">
+
+                    <h2 id="machineCoding">
+                        0 / 5
+                    </h2>
+
+                </div>
+
+                <div class="machine-progress">
+
+                    <div
+                        class="machine-progress-bar"
+                        id="machineProgressBar">
+                    </div>
+
+                </div>
+
+                <span
+                    class="machine-percent"
+                    id="machinePercent">
+                    0%
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- OVERALL PROGRESS -->
+        <section
+            class="progress-card"
+            id="progressSection">
+
+            <div class="progress-info">
+
+                <div>
+
+                    <h3>Overall Progress</h3>
+
+                    <p id="overallProgressText">
+                        0 of 0 questions completed
+                    </p>
+
+                </div>
+
+                <strong id="overallPercent">
+                    0%
+                </strong>
+
+            </div>
+
+            <div class="progress-track">
+
+                <div
+                    class="progress-fill"
+                    id="overallProgressBar">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SEARCH + FILTER -->
+        <section class="filters">
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    ⌕
+                </span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search questions..."
+                >
+
+            </div>
+
+
+            <div class="filter">
+
+                <label>Category</label>
+
+                <select id="categoryFilter">
+
+                    <option value="All">All</option>
+                    <option value="DSA">DSA</option>
+                    <option value="Git">Git</option>
+                    <option value="Technical">Technical</option>
+                    <option value="Machine Coding">
+                        Machine Coding
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter">
+
+                <label>Status</label>
+
+                <select id="statusFilter">
+
+                    <option value="All">All</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">
+                        In Progress
+                    </option>
+                    <option value="Completed">
+                        Completed
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter">
+
+                <label>Difficulty</label>
+
+                <select id="difficultyFilter">
+
+                    <option value="All">All</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUESTIONS -->
+        <section
+            class="questions-card"
+            id="questionsSection">
+
+            <div class="questions-heading">
+
+                <div>
+
+                    <h2>Questions</h2>
+
+                    <p>
+                        Track your interview preparation.
+                    </p>
+
+                </div>
+
+                <button
+                    id="addQuestionBtn"
+                    class="add-question-btn">
+                    + Add Question
+                </button>
+
+            </div>
+
+
+            <!-- TABLE HEADER -->
+            <div class="table-header">
+
+                <span>Title</span>
+                <span>Category</span>
+                <span>Difficulty</span>
+                <span>Status</span>
+                <span>Actions</span>
+
+            </div>
+
+
+            <!-- QUESTIONS WILL BE GENERATED HERE -->
+            <div id="questionsList"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ADD / EDIT MODAL -->
+<div
+    class="modal"
+    id="questionModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add Question
+            </h2>
+
+            <button
+                id="closeModal"
+                type="button">
+                &times;
+            </button>
+
+        </div>
+
+
+        <form id="questionForm">
+
+            <input
+                type="hidden"
+                id="editQuestionId"
+            >
+
+
+            <div class="form-group">
+
+                <label>
+                    Question Title
+                </label>
+
+                <input
+                    type="text"
+                    id="questionTitle"
+                    placeholder="e.g. Two Sum"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Category
+                </label>
+
+                <select id="questionCategory">
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    <option value="DSA">
+                        DSA
+                    </option>
+
+                    <option value="Git">
+                        Git
+                    </option>
+
+                    <option value="Technical">
+                        Technical
+                    </option>
+
+                    <option value="Machine Coding">
+                        Machine Coding
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Difficulty
+                </label>
+
+                <select id="questionDifficulty">
+
+                    <option value="">
+                        Select Difficulty
+                    </option>
+
+                    <option value="Easy">
+                        Easy
+                    </option>
+
+                    <option value="Medium">
+                        Medium
+                    </option>
+
+                    <option value="Hard">
+                        Hard
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Status
+                </label>
+
+                <select id="questionStatus">
+
+                    <option value="">
+                        Select Status
+                    </option>
+
+                    <option value="Pending">
+                        Pending
+                    </option>
+
+                    <option value="In Progress">
+                        In Progress
+                    </option>
+
+                    <option value="Completed">
+                        Completed
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="save-question-btn">
+                Save Question
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+<script src="enhance.js"></script>
+
+
+</body>
+</html>
